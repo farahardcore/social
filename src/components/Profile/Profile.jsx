@@ -6,7 +6,7 @@ import { dirname } from 'path';
 
 const Profile = () => {
     return(
-        <div className={s.content}>
+        <div>
             <div>
                 <img src="https://esquire.kz/wp-content/uploads/2018/04/3367434-aiw_master-1-960x540.jpg" />
             </div>
