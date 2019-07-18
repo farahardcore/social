@@ -1,0 +1,6 @@
+.friends img {
+    display: flex;
+    margin: 50px;
+    width: 100px;
+    border-radius: 50%;
+}
