@@ -1,18 +1,22 @@
+
+import * as serviceWorker from './serviceWorker';
+import state, { subscribe } from "./Redux/state"
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
-import state from "./Redux/state.js"
 import {BrowserRouter} from "react-router-dom"
+import {addPost, updateNewPostText} from "./Redux/state.js";
 
 
+ let rerenderEntireThree=()=> {
 ReactDOM.render(
     <BrowserRouter>
-        <App state={state} />
+        <App state={state} addPost={addPost} updateNewPostText={updateNewPostText} />
     </BrowserRouter>, document.getElementById('root'));
+}
+rerenderEntireThree(state);
+subscribe(rerenderEntireThree);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+
 serviceWorker.unregister();

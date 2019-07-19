@@ -1,4 +1,6 @@
-
+let rerenderEntireThree = () => {
+    console.log("state changed");
+}
 
 let state = {
     profilePage : {
@@ -8,7 +10,8 @@ let state = {
             {id: 3 , message : "It's my first post!" , likesCount : 15},
             {id: 4 , message : "What do you doing?" , likesCount : 13},
             {id: 5 , message : "How much is the fish?" , likesCount : 11}
-          ]
+          ],
+          newPostText : "Farid powel naxou"
     },
    dialogsPage : {
     dialogs : [
@@ -34,4 +37,23 @@ let state = {
        ]
    }
 }
+
+    export const addPost = () =>{
+        let newPost = {
+            id : 6,
+            message : state.profilePage.newPostText,
+            likesCount : 0
+        };
+        state.profilePage.posts.push(newPost);
+        state.profilePage.newPostText = "";
+        rerenderEntireThree(state);
+    }
+    export const updateNewPostText = (newText) =>{
+        state.profilePage.newPostText = newText;
+        rerenderEntireThree(state);
+    }
+    export const subscribe=(observer)=>{
+        rerenderEntireThree = observer;
+    }
 export default state;
+
