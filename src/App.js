@@ -8,10 +8,12 @@ import {Route} from "react-router-dom";
 
 
 const App = (props) => {
+    console.log(props.state);
   return (
     <div className="app-wrapper">
      <Header />
-     <Navbar state={props.state.sitebar} />
+     <Navbar state={props.state}
+             dispatch={props.dispatch}/>
      <div className="app-wrapper-content">
        <Route  path="/dialogs" 
        render={ () => <Dialogs state={props.state.dialogsPage}
