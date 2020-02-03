@@ -1,4 +1,4 @@
-const ADD_NEW_MESSAGE = "ADD_NEW_MESSAGE";
+const ADD_NEW_MESSAGE_BODY = "ADD_NEW_MESSAGE_BODY";
 const UPDATE_NEW_MESSAGE = "UPDATE_NEW_MESSAGE";
 let inititalState = {
     dialogs : [
@@ -20,7 +20,7 @@ let inititalState = {
 }
 const  dialogsReducer = (state = inititalState ,action) => {
     switch(action.type) {
-        case ADD_NEW_MESSAGE:
+        case ADD_NEW_MESSAGE_BODY:
             let newMessage = {
                 id: 6,
                 message: state.newMessageText
@@ -35,7 +35,7 @@ const  dialogsReducer = (state = inititalState ,action) => {
             return state;
     }
 };
-export const addNewMessageActionCreator = () => ({type : ADD_NEW_MESSAGE});
-export const updateNewMessageActionCreator = (text) =>
+export const addNewMessageBodyActionCreator = () => ({type : ADD_NEW_MESSAGE_BODY});
+export const updateNewMessageBodyActionCreator = (text) =>
     ({type : UPDATE_NEW_MESSAGE , newText : text});
 export default dialogsReducer;
