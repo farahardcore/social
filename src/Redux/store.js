@@ -31,7 +31,7 @@ let store = {
             {id: 5 , message : "How much is the fish?"}
 
           ],
-           newMessageBody : ""
+           newMessageBody : "hello"
        },
        // sidebar : {
        //     friends : [
