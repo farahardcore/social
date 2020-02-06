@@ -5,7 +5,6 @@ import Friends from './Friends/Friends';
 import {friendsListActionCreator} from "../../Redux/sitebarReducer";
 
 const Navbar = (props) => {
-  debugger;
   let friendsElement = ()=> {
      props.dispatch(friendsListActionCreator())
   };
