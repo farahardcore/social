@@ -16,12 +16,6 @@ export const usersAPI = {
                return response.data;
             });
     },
-    pageChanged(pageNumber,pageSize){
-        return instance.get(`users?page=${pageNumber}&count=${pageSize}`)
-            .then(response => {
-                return response.data;
-            });
-    },
     setFollow(userId){
         return instance.post(`follow/${userId}`)
             .then(response => {
@@ -35,3 +29,19 @@ export const usersAPI = {
             })
     }
 };
+export const headerAPI = {
+    getAuth(){
+        return instance.get(`auth/me`
+        ).then(response => {
+            return response.data;
+        });
+    }
+};
+export const profileAPI = {
+    getUserProfile(userId){
+        return instance.get(`profile/${userId}`)
+            .then(response=> {
+                return response.data;
+            })
+    }
+}
