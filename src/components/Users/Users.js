@@ -2,6 +2,7 @@ import React from "react"
 import userPhoto from "../../assets/images/images.jfif";
 import s from "./users.module.css";
 import {NavLink} from "react-router-dom";
+import {usersAPI} from "../../DAL/api";
 
 function Users(props) {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -28,11 +29,28 @@ function Users(props) {
                     </NavLink>
                     <div>
                         {user.followed
-                            ? <button onClick={() => {
-                                props.unfollow(user.id)
+                            ? <button disabled={props.followingInProgress.some(id=>id===user.id)} onClick={() => {
+                                console.log(props.followingInProgress);
+                                props.followingProgress(true, user.id);
+                                usersAPI.setUnfollow(user.id)
+                                    .then(response=>{
+                                        if(response===0){
+                                            props.unfollow(user.id)
+                                        }
+                                        props.followingProgress(false, user.id);
+
+                                    });
+
                             }}>Unfollow</button>
-                            : <button onClick={() => {
-                                props.follow(user.id)
+                            : <button disabled={props.followingInProgress.some(id=>id===user.id)} onClick={() => {
+                                props.followingProgress(true, user.id);
+                                usersAPI.setFollow(user.id)
+                                    .then(response=>{
+                                        if(response===0) {
+                                            props.follow(user.id)
+                                        }
+                                        props.followingProgress(false, user.id);
+                                    });
                             }}>Follow</button>}
                     </div>
                 </span>
