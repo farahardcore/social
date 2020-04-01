@@ -27,7 +27,6 @@ export default  authReducer;
 export const setAuthUsersData = () => (dispatch) => {
     headerAPI.getAuth().then(
         data => {
-            debugger;
             if(data.resultCode === 0){
                 let {id, email, login} = data.data;
                 dispatch(setAuthUsersDataSuccess( id, email, login ));

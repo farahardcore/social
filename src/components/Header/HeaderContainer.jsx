@@ -7,7 +7,6 @@ import {headerAPI} from "../../DAL/api";
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
-        debugger
         this.props.setAuthUsersData();
     }
 
