@@ -10,10 +10,13 @@ import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
+        console.log(this.props);
         let userId = this.props.match.params.userId;
         if(!userId){
             userId = 5945;
-            // console.log(this.props);
+            if(!userId){
+                this.props.history.push("/login");
+            }
 
         }
         this.props.setUserProfile(userId);
