@@ -29,14 +29,6 @@ export const usersAPI = {
             })
     }
 };
-export const headerAPI = {
-    getAuth(){
-        return instance.get(`auth/me`
-        ).then(response => {
-            return response.data;
-        });
-    }
-};
 export const profileAPI = {
     getUserProfile(userId){
         return instance.get(`profile/${userId}`)
@@ -51,3 +43,14 @@ export const profileAPI = {
         return instance.put(`profile/status`, {status : status})
     }
 }
+export const loginAPI = {
+    me(){
+        return instance.get(`auth/me`)
+    },
+    login(email, password, rememberMe=false){
+        return instance.post(`auth/login`, {email, password, rememberMe})
+    },
+    logout(){
+        return instance.delete(`auth/login`)
+    }
+};

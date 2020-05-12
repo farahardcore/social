@@ -1,0 +1,14 @@
+.formController{
+
+}
+.formController input,
+.formController textarea{
+  border: 2px solid red;
+}
+.formController span{
+ color: red;
+}
+.formSummaryError {
+    color: red;
+    padding: 5px;
+}

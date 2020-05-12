@@ -2,7 +2,6 @@ import {profileAPI} from "../DAL/api";
 
 const SET_STATUS = "SET_STATUS";
 const ADD_POST = "ADD_POST";
-const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 let initialState = {
@@ -24,7 +23,7 @@ const  profileReducer = (state = initialState,action) => {
         case ADD_POST: {
             let newPost = {
                 id: 7,
-                message: state.newPostText,
+                message: action.newPostBody,
                 likesCount: 0
             };
             return{
@@ -33,17 +32,11 @@ const  profileReducer = (state = initialState,action) => {
                 newPostText: ""
             };
         }
-        case UPDATE_NEW_POST_TEXT: {
-            return {
-                ...state,
-                newPostText: action.newText
-            };
-        }
         case SET_USER_PROFILE: {
             return {
                 ...state, profile : action.profile
-            }
-        };
+            };
+        }
         case SET_STATUS: {
             return {
                 ...state, status : action.status
@@ -53,8 +46,7 @@ const  profileReducer = (state = initialState,action) => {
             return state;
     }
 };
-export const addPostActionCreator = () => ({type : ADD_POST});
-export const updateNewPostTextActionCreator = (text) => ({type : UPDATE_NEW_POST_TEXT , newText : text});
+export const addPostActionCreator = (newPostBody) => ({type : ADD_POST, newPostBody});
 const setUserProfileSuccess = (profile)=> ({type : SET_USER_PROFILE, profile});
 const setStatus = (status) => ({type : SET_STATUS,status});
 export const getUserStatus = (userId) => (dispatch) =>{

@@ -1,5 +1,6 @@
 import React from "react";
-import {headerAPI} from "../DAL/api";
+import {loginAPI} from "../DAL/api";
+import {stopSubmit} from "redux-form";
 
 const SET_USERS_DATA = "SET_USERS_DATA";
 
@@ -14,25 +15,47 @@ const  authReducer = (state = initialState ,action) => {
         case SET_USERS_DATA:
             return {
                 ...state,
-                ...action.data,
+                ...action.payload,
                 isAuth: true
             };
         default :
             return state;
     }
 };
-
-const setAuthUsersDataSuccess = (userId, email, login) => ({type : SET_USERS_DATA,data: { userId ,email ,login}});
 export default  authReducer;
-export const setAuthUsersData = () => (dispatch) => {
-    headerAPI.getAuth().then(
-        data => {
-            if(data.resultCode === 0){
-                let {id, email, login} = data.data;
-                dispatch(setAuthUsersDataSuccess( id, email, login ));
-            }else{
-                alert(`${data.messages}<3`);
+const setAuthUsersData = (Id, email, login, isAuth) => ({type : SET_USERS_DATA,payload: { Id ,email ,login, isAuth}});
+export const getAuthUsersData = () => (dispatch) => {
+    loginAPI.me().then(
+        response => {
+            if(response.data.resultCode === 0){
+                let {Id , email , login} = response.data.data;
+                dispatch(setAuthUsersData(Id , email , login, true))
             }
         }
     )
+
+};
+export const login = (email, password, rememberMe) => (dispatch) => {
+    loginAPI.login(email, password, rememberMe).then(
+        response => {
+            debugger;
+            if(response.data.resultCode === 0){
+                dispatch(getAuthUsersData())
+
+            }else{
+                let errorMessage = response.data.messages.length > 0 ? response.data.messages[0] : "check the correctness of the entered data"
+                dispatch(stopSubmit("Login", {_error : errorMessage }));
+            }
+        }
+    )
+};
+export const logout = () => (dispatch) => {
+    loginAPI.logout().then(
+        response => {
+            if(response.data.resultCode === 0){
+                dispatch(setAuthUsersData(null,null,null,false))
+            }
+        }
+    )
+
 };
