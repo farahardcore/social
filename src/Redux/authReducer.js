@@ -27,7 +27,9 @@ const setAuthUsersData = (Id, email, login, isAuth) => ({type : SET_USERS_DATA,p
 export const getAuthUsersData = () => (dispatch) => {
     loginAPI.me().then(
         response => {
+            debugger;
             if(response.data.resultCode === 0){
+                debugger;
                 let {Id , email , login} = response.data.data;
                 dispatch(setAuthUsersData(Id , email , login, true))
             }
