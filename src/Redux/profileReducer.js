@@ -3,6 +3,7 @@ import {profileAPI} from "../DAL/api";
 const SET_STATUS = "SET_STATUS";
 const ADD_POST = "ADD_POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
+const DELETE_POST = "DELETE_POST";
 
 let initialState = {
     posts : [
@@ -42,10 +43,16 @@ const  profileReducer = (state = initialState,action) => {
                 ...state, status : action.status
             }
         }
+        case DELETE_POST: {
+            return {
+                ...state, posts : state.posts.filter(p => p.id != action.postId)
+            }
+        }
         default :
             return state;
     }
 };
+export const  deletePost = (postId) => ({type : DELETE_POST, postId});
 export const addPostActionCreator = (newPostBody) => ({type : ADD_POST, newPostBody});
 const setUserProfileSuccess = (profile)=> ({type : SET_USER_PROFILE, profile});
 const setStatus = (status) => ({type : SET_STATUS,status});
