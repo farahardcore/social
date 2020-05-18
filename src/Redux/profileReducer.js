@@ -1,4 +1,4 @@
-import {profileAPI} from "../DAL/api";
+import {profileAPI, usersAPI} from "../DAL/api";
 
 const SET_STATUS = "SET_STATUS";
 const ADD_POST = "ADD_POST";
@@ -56,30 +56,20 @@ export const  deletePost = (postId) => ({type : DELETE_POST, postId});
 export const addPostActionCreator = (newPostBody) => ({type : ADD_POST, newPostBody});
 const setUserProfileSuccess = (profile)=> ({type : SET_USER_PROFILE, profile});
 const setStatus = (status) => ({type : SET_STATUS,status});
-export const getUserStatus = (userId) => (dispatch) =>{
-    profileAPI.getStatus(userId).then(
-        response=>{
+export const getUserStatus = (userId) => async (dispatch) =>{
+    let response = await profileAPI.getStatus(userId);
             debugger
             dispatch(setStatus(response.data));
-        }
-    )
 };
-export const updateUserStatus = (status) => (dispatch) =>{
-    profileAPI.updateStatus(status).then(
-        response=>{
+export const updateUserStatus = (status) => async (dispatch) =>{
+    let response = await profileAPI.updateStatus(status);
             if(response.data.resultCode === 0){
                 dispatch(setStatus(status));
             }
-
-        }
-    )
-}
-export const setUserProfile = (userId) => (dispatch) => {
-    profileAPI.getUserProfile(userId).then(
-        profile=>{
+};
+export const setUserProfile = (userId) => async (dispatch) => {
+    let profile = await profileAPI.getUserProfile(userId);
             dispatch(setUserProfileSuccess(profile));
-        }
-    );
 }
 
 export default profileReducer;
