@@ -1,4 +1,4 @@
-import {profileAPI, usersAPI} from "../DAL/api";
+import {profileAPI} from "../DAL/api";
 
 const SET_STATUS = "SET_STATUS";
 const ADD_POST = "ADD_POST";
@@ -45,7 +45,7 @@ const  profileReducer = (state = initialState,action) => {
         }
         case DELETE_POST: {
             return {
-                ...state, posts : state.posts.filter(p => p.id != action.postId)
+                ...state, posts : state.posts.filter(p => p.id !== action.postId)
             }
         }
         default :

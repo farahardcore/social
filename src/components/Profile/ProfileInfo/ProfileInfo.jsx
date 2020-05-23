@@ -12,10 +12,10 @@ const ProfileInfo = (props) => {
         return(
             <div>
                 <div className={s.avatar}>
-                    <img src="https://esquire.kz/wp-content/uploads/2018/04/3367434-aiw_master-1-960x540.jpg" />
+                    <img alt="hey" src="https://esquire.kz/wp-content/uploads/2018/04/3367434-aiw_master-1-960x540.jpg" />
                 </div>
                 <div className={s.descriptionBlock}>
-                    <img src={props.profile.photos.large}/>
+                    <img alt="hey" src={props.profile.photos.large}/>
                     <span>{props.profile.fullName}</span>
                     <ProfileStatusWithHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
                 </div>

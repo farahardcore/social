@@ -2,10 +2,9 @@ import React from "react"
 import userPhoto from "../../assets/images/images.jfif";
 import s from "./users.module.css";
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../../DAL/api";
 
 function Users(props) {
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+    // let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
     for (let i = 1; i <= 20; i++) {
         pages.push(i)
@@ -24,7 +23,7 @@ function Users(props) {
                 <span>
                     <NavLink to={`profile/`+user.id}>
                         <div>
-                            <img src={user.photos.small != null ? user.photos.small : userPhoto} className={s.photo}/>
+                            <img alt="logo" src={user.photos.small != null ? user.photos.small : userPhoto} className={s.photo}/>
                         </div>
                     </NavLink>
                     <div>

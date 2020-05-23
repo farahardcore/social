@@ -1,4 +1,4 @@
-import React from "react";
+
 import {loginAPI} from "../DAL/api";
 import {stopSubmit} from "redux-form";
 

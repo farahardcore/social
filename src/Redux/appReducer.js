@@ -1,4 +1,4 @@
-import React from "react";
+
 import {getAuthUsersData} from "./authReducer";
 
 const SET_INITIALIZED = "SET_INITIALIZED";

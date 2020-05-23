@@ -1,6 +1,5 @@
 import React from "react"
 import  {LoginReduxForm} from "./FormLogin";
-import {Redirect} from "react-router-dom";
 
 const Login = (props) => {
     const onSubmit = (formData) => {

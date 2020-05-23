@@ -4,7 +4,7 @@ import s from "./Post.module.css"
 const Post = (props) => {
     return (
         <div className={s.item}>
-            <img className={s.post_img} src="https://www.freeiconspng.com/uploads/shield-marvel-icon-5.jpg" />
+            <img alt="" className={s.post_img} src="https://www.freeiconspng.com/uploads/shield-marvel-icon-5.jpg" />
             { props.message }
             <div>
                 <span>Like: { props.like }</span>
