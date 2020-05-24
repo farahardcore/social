@@ -3,16 +3,15 @@ import s from "./Header.module.css"
 import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
-
-    return <header className={s.header}>
+    return (
+    <header className={s.header}>
         <img alt="" src="https://img2.freepng.es/20180331/aye/kisspng-iron-man-captain-america-logo-marvel-cinematic-uni-avengers-5abf62fa369331.0376927015224921542236.jpg"></img>
         <div className={s.loginBlock}>
-            {props.isAuth ? props.login : <NavLink to={"/login/"}>Login</NavLink>}
-            {props.isAuth ? <button>Logout</button> : ""}
-
-
+            {props.isAuth ?
+                <div>{props.login} - <button onClick={props.logout}>Log out</button> </div>
+                : <NavLink to={'/login'}>Login</NavLink> }
         </div>
-    </header>
+    </header>)
 }
 
 export default Header;

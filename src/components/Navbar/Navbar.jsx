@@ -1,7 +1,7 @@
 import React from 'react'
 import s from "./Navbar.module.css"
 import {NavLink} from "react-router-dom";
-import {friendsListActionCreator} from "../../Redux/sitebarReducer";
+
 
 const Navbar = (props) => {
     //Тут можно получить кастомых друзей
