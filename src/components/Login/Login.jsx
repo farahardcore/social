@@ -6,7 +6,7 @@ import {login} from "../../Redux/authReducer";
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        props.login(formData.email,formData.password,formData.rememberMe);
+        props.login(formData.email,formData.password,formData.rememberMe,formData.captcha);
 
     };
     if(props.isAuth){
@@ -16,11 +16,12 @@ const Login = (props) => {
 
         <div>
             <h1>LOGIN</h1>
-            <LoginReduxForm onSubmit={onSubmit} />
+            <LoginReduxForm onSubmit={onSubmit} captchaURL={props.captchaURL} />
         </div>
     )
 }
 let mapStateToProps = (state) => ({
-    isAuth : state.auth.isAuth
+    isAuth : state.auth.isAuth,
+    captchaURL: state.auth.captchaURL
 });
 export default  connect(mapStateToProps, {login} )(Login);

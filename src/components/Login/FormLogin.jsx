@@ -1,6 +1,6 @@
 import React from "react"
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../FormControls/FormControls";
+import {createField, Input} from "../FormControls/FormControls";
 import {required} from "../../utillits/validators/validators";
 import styles from "../FormControls/FormControls.module.css"
 
@@ -15,6 +15,8 @@ const FormLogin = (props) => {
             </div>
             <div>
                 <Field name={`rememberMe`} type={"checkbox"} component={Input}/>Remember me
+                {props.captchaURL && <img src={props.captchaURL}/>}
+                {props.captchaURL && createField("symbols from image", "captcha", [required], Input, {})}
                 {props.error&&<div className={styles.formSummaryError}>
                     {props.error}
                 </div>}
