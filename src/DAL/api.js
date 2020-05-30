@@ -41,19 +41,25 @@ export const profileAPI = {
     },
     updateStatus(status){
         return instance.put(`profile/status`, {status : status})
+    },
+    savePhoto(file){
+        let formData = new FormData();
+        formData.append("image" , file)
+        return instance.put(`profile/photo` , formData , {
+            headers : {
+                "Content-type" : "multipart/form-data"
+            }
+        })
     }
 }
 export const loginAPI = {
     me(){
-        debugger;
         return instance.get(`auth/me`)
     },
     login(email, password, rememberMe=false){
-        debugger;
         return instance.post(`auth/login`, {email, password, rememberMe})
     },
     logout(){
-        debugger;
         return instance.delete(`auth/login`)
     }
 };

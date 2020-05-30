@@ -12,10 +12,14 @@ class HeaderContainer extends React.Component {
             console.log("НЕ ВИДИТ ЧТО АВТОРИЗОВАН");
         }
     }
-
+    reloadPage(){
+        debugger;
+        window.location.reload();
+        alert("page was reload");
+    }
     render() {
 
-        return <Header {...this.props}/>
+        return <Header {...this.props} reloadPage={this.reloadPage}/>
     }
 }
 const mapStateToProps = (state) => ({
