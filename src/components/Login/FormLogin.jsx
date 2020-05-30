@@ -14,7 +14,7 @@ const FormLogin = (props) => {
                 <Field name={`password`} placeholder={"Password"} type={"password"} component={Input} validate={[required]}/>
             </div>
             <div>
-                <Field name={`rememberMe`} type={"checkbox"} component={"input"}/>Remember me
+                <Field name={`rememberMe`} type={"checkbox"} component={Input}/>Remember me
                 {props.error&&<div className={styles.formSummaryError}>
                     {props.error}
                 </div>}

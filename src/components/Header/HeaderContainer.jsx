@@ -1,25 +1,15 @@
 import React from 'react'
 import Header from "./Header";
 import {connect} from "react-redux";
-import {logout} from "../../Redux/authReducer";
-import {loginAPI} from "../../DAL/api";
+import {getAuthUsersData, logout} from "../../Redux/authReducer";
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
-        if(this.props.isAuth){
-            alert("you are authorised");
-        }else{
-            console.log("НЕ ВИДИТ ЧТО АВТОРИЗОВАН");
-        }
-    }
-    reloadPage(){
-        debugger;
-        window.location.reload();
-        alert("page was reload");
+       this.props.getAuthUsersData();
     }
     render() {
 
-        return <Header {...this.props} reloadPage={this.reloadPage}/>
+        return <Header {...this.props} />
     }
 }
 const mapStateToProps = (state) => ({
@@ -27,4 +17,5 @@ const mapStateToProps = (state) => ({
     login : state.auth.login
 
 });
-export default connect(mapStateToProps , {logout })(HeaderContainer);
+export default connect(mapStateToProps , {logout,getAuthUsersData
+})(HeaderContainer);

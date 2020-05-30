@@ -50,8 +50,11 @@ export const profileAPI = {
                 "Content-type" : "multipart/form-data"
             }
         })
+    },
+    saveProfile(profile){
+        return instance.put(`profile`, profile)
     }
-}
+};
 export const loginAPI = {
     me(){
         return instance.get(`auth/me`)
