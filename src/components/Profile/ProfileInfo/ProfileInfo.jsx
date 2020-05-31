@@ -26,15 +26,21 @@ const ProfileInfo = (props) => {
     };
         return(
             <div>
-                <div className={s.avatar}>
-                    <img alt="" src="https://esquire.kz/wp-content/uploads/2018/04/3367434-aiw_master-1-960x540.jpg" />
-                </div>
                 <div className={s.descriptionBlock}>
-                    <img alt="" src={props.profile.photos.large || usePhoto}/>
-                    {props.isOwner && <input onChange={onMainPhotoSelected} type="file"/> }
-                    <ProfileStatusWithHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
-                    {editMode ? <ProfileDataForm initialValues={props.profile} onSubmit={onSubmit} profile={props.profile }/> : <ProfileData isOwner={props.isOwner} goToEditMode={ ()=> {setEditMode(true)}} profile={props.profile }/> }
-
+                    <div>
+                        <div>
+                            <img className={s.profilePhoto} alt="" src={props.profile.photos.large || usePhoto}/>
+                        </div>
+                        <div className={s.changeAvatar}>
+                            {props.isOwner && <input onChange={onMainPhotoSelected} type="file"/> }
+                            <ProfileStatusWithHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
+                        </div>
+                    </div>
+                    <div className={s.profileInfo}>
+                        {editMode ? <ProfileDataForm initialValues={props.profile} onSubmit={onSubmit}
+                         profile={props.profile }/> : <ProfileData isOwner={props.isOwner}
+                         goToEditMode={ ()=> {setEditMode(true)}} profile={props.profile }/> }
+                    </div>
                 </div>
 
             </div>
@@ -43,10 +49,6 @@ const ProfileInfo = (props) => {
 const ProfileData = ({profile, goToEditMode , isOwner}) => {
     return (
         <div>
-            {isOwner &&  <div>
-                <button onClick={goToEditMode}>edit</button>
-            </div> }
-
             <div>
                 <b> Full Name :</b> {profile.fullName}
             </div>
@@ -66,6 +68,9 @@ const ProfileData = ({profile, goToEditMode , isOwner}) => {
                 return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
             }) }
             </div>
+            {isOwner &&  <div>
+                <button onClick={goToEditMode}>edit</button>
+            </div> }
         </div>
     )
 };

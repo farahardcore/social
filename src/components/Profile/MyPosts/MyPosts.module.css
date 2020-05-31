@@ -1,6 +1,20 @@
 .postsBlock {
-    padding: 10px;
+    margin-top: 10px;
+    margin-left: 50px;
 }
 .posts {
     margin-top: 10px;
 }
+.formBtn{
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1.5px solid darkblue;
+    background-color: darkviolet;
+    color: white;
+    font-size: 20px;
+}.formBtn:hover{
+     border: 1.5px solid darkblue;
+     background-color: orchid;
+     color: darkblue;
+ }

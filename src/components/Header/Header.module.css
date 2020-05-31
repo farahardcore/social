@@ -1,12 +1,27 @@
 .header {
     grid-area: h;
-    background-color: coral;
+    display: flex;
+    justify-content: space-between;
+    background-color: darkviolet;
+    opacity: 85%;
+    color: black;
+    border-radius: 10px;
+    border: 2px solid darkblue;
   }
-
-  .header img{
+.header img{
     width: 60px;
-  }
+}
+.ownerName {
+    font-size: 20px;
+    font-family: Calibri;
+}
+.logout :hover{
+    color: orchid;
+}
+
+
   .loginBlock{
+      margin: 10px;
       float: right;
   }
   .loginBlock a{

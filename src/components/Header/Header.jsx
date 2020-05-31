@@ -1,17 +1,23 @@
  import React from 'react'
 import s from "./Header.module.css"
 import {NavLink} from "react-router-dom";
+import {Button} from "@material-ui/core/";
+
+
 
 const Header = (props) => {
     return (
     <header className={s.header}>
-        <img alt="" src="https://img2.freepng.es/20180331/aye/kisspng-iron-man-captain-america-logo-marvel-cinematic-uni-avengers-5abf62fa369331.0376927015224921542236.jpg"></img>
+        <div className={s.left}>
+            <h5>SPACE Social Network</h5>
+        </div>
         <div className={s.loginBlock}>
             {props.isAuth ?
-                <div>{props.login} - <button onClick={props.logout}>Log out</button> </div>
-                : <NavLink to={'/login'}>Login</NavLink> }
+                <div className={props.isAuth ? s.logout : s.login}>{props.login} - <Button variant="outlined" color="primary" href="#outlined-buttons" onClick={props.logout}>Log out</Button> </div>
+                : <NavLink to={'/login'}><Button variant="outlined" color="primary">Login</Button></NavLink> }
         </div>
+
     </header>)
-}
+};
 
 export default Header;

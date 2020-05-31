@@ -1,10 +1,28 @@
 .nav {
     grid-area: n;
-    background-color:coral;
+    color: black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+
   }
+.item  {
+    background-color: darkviolet;
+    padding: 10px;
+    margin-top: 5px;
+    border: 2px solid darkblue;
+    border-radius: 15px;
+    font-size: 20px;
+    height: 30px;
+    justify-content: center;
+}
 .item a {
     color: white;
 }
+.item:hover {
+    border: darkviolet;
+    background-color: orchid;
+}
 .item a.active{
-  color: gold;
+  color: darkblue;
 }
