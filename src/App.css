@@ -15,7 +15,7 @@
 .app-wrapper-content{
    grid-area: c;
    background-color: darkviolet;
-    opacity: 90%;
+     opacity: 90%;
     border-radius: 20px;
 }
 
