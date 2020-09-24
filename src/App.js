@@ -12,7 +12,7 @@ import Preloader from "./components/preloader/preloader";
 import {withSuspense} from "./hoc/withSuspense";
 
 
-const DialogsContainer = React.lazy(()=> import(`./components/Dialogs/DialogsContainer`));
+const DialogsContainer = React.lazy(()=> import(`src/components/Dialogs/DialogsContainer`));
 class App extends React.Component {
     catchAllUnhandledError(promiseRejectionEvent){
         alert("some error catch");

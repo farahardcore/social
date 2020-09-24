@@ -32,3 +32,11 @@ export type UserType = {
     status : string
     photos : PhotosType
 }
+export type DialogsType = {
+    id : number
+    name : string
+}
+export type MessagesType = {
+    id : number
+    message : string
+}

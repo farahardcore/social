@@ -6,16 +6,24 @@ import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../hoc/AuthRedirect";
 import {compose} from "redux";
+import {DialogsType, MessagesType} from "../../types/types";
 
-let mapStateToProps = (state) => {
+type StateType = {
+    dialogsPage : {
+        dialogs : [DialogsType]
+        messages : [MessagesType]
+    }
+
+}
+let mapStateToProps = (state:StateType) => {
     return {
         dialogsPage: state.dialogsPage,
     }
 };
 
-let mapDispatchToProps = (dispatch) => {
+let mapDispatchToProps = (dispatch:any) => {
     return {
-        sendMessage : (newMessageBody)=>{
+        sendMessage : (newMessageBody:string)=>{
             dispatch(addNewMessageBodyActionCreator(newMessageBody));
             debugger;
         }

@@ -1,13 +1,8 @@
+import {DialogsType, MessagesType } from "../types/types";
+
 const ADD_NEW_MESSAGE_BODY = "ADD_NEW_MESSAGE_BODY";
 
-type DialogsType = {
-    id : number
-    name : string
-}
-type MessagesType = {
-    id : number
-    message : string
-}
+
 let inititalState = {
     dialogs: [
         {id: 1, name: "Maksim"},
